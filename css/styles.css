@@ -67,11 +67,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 header .container {
     flex-direction: column;
     text-align: center;
+    max-width: 1100px;
 }
 
 header h1 {
@@ -267,6 +269,7 @@ nav ul li a.active:after {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
+    margin: 0 auto;
 }
 
 .gallery-item {
@@ -556,7 +559,7 @@ nav ul li a.active:after {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     position: relative;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 16px;
@@ -612,6 +615,7 @@ nav ul li a.active:after {
     gap: 30px;
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.06);
+    max-width: 100%;
 }
 
 .experience-item:hover {
@@ -634,6 +638,7 @@ nav ul li a.active:after {
 
 .experience-details {
     flex: 1;
+    min-width: 0;
 }
 
 .experience-item h3 {
@@ -692,6 +697,7 @@ nav ul li a.active:after {
     height: 200px;
     overflow: hidden;
     border-radius: 12px;
+    align-self: flex-start;
 }
 
 .leadership-media img {
@@ -1583,17 +1589,20 @@ footer {
     background: var(--light-color);
     color: var(--primary-color);
     padding: 120px 0 80px 0;
+    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: 60px;
+    max-width: 100%;
 }
 
 .hero-text {
     flex: 1;
+    min-width: 0;
 }
 
 .hero-text h2 {
@@ -1616,13 +1625,16 @@ footer {
 .hero-image {
     flex: 1;
     text-align: right;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .hero-image img {
     max-width: 100%;
     height: auto;
     max-height: 450px;
-    width: auto;
+    width: 350px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
@@ -1686,6 +1698,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
+    max-width: 100%;
 }
 
 .highlight-item {
@@ -1774,6 +1787,7 @@ footer {
     flex-direction: column;
     gap: 30px;
     margin-top: 40px;
+    max-width: 100%;
 }
 
 .featured-item {
@@ -1786,6 +1800,7 @@ footer {
     box-shadow: var(--box-shadow);
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.06);
+    max-width: 100%;
 }
 
 .featured-item:hover {
@@ -1798,10 +1813,18 @@ footer {
     height: 200px;
     object-fit: cover;
     object-position: center;
+    flex-shrink: 0;
+    max-width: 40%;
 }
 
 .featured-text {
     padding: 20px;
+}
+
+.featured-text {
+    padding: 20px;
+    flex: 1;
+    min-width: 0;
 }
 
 .featured-text h3 {
