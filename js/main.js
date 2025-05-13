@@ -1,42 +1,55 @@
-// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Set active navigation link based on current page
+    const currentPage = window.location.pathname.split('/').pop();
     const navLinks = document.querySelectorAll('nav a');
     
-    for (const link of navLinks) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            window.scrollTo({
-                top: targetSection.offsetTop,
-                behavior: 'smooth'
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage || 
+            (currentPage === '' && linkHref === 'index.html') ||
+            (window.location.pathname.endsWith('/') && linkHref === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Animation for elements with fade-in class
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
             });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        fadeElements.forEach(element => {
+            element.classList.add('visible');
         });
     }
-
-    // Add active class to navigation items when scrolling
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('nav a');
-        
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (pageYOffset >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
+    
+    // Add hover animations to cards and buttons
+    const animateElements = document.querySelectorAll('.highlight-item, .featured-item, .project-card, .btn');
+    
+    animateElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
         });
         
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
         });
     });
 });
