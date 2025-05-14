@@ -11,6 +11,48 @@
     --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     --card-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
     --transition: all 0.3s ease;
+    --bg-color: var(--light-color);
+    --card-bg: white;
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --header-blur: blur(20px);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --primary-color: #ffffff;
+    --text-color: #ffffff;
+    --text-light: #b8b8c0;
+    --light-color: #252527;
+    --bg-color: #0a0a0a;
+    --card-bg: #1a1a1c;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --card-hover: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --header-bg: rgba(20, 20, 22, 0.9);
+    --header-blur: blur(20px);
+}
+
+/* Body border indicator for dark mode */
+[data-theme="dark"] body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 2px rgba(0, 113, 227, 0.5);
+    z-index: 9999;
+}
+
+/* Improve contrast for dark mode buttons */
+[data-theme="dark"] .btn-primary {
+    background-color: #0095ff;
+    box-shadow: 0 0 15px rgba(0, 149, 255, 0.3);
+}
+
+[data-theme="dark"] .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
 * {
@@ -23,13 +65,14 @@ body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.01em;
     font-weight: 400;
     overflow-x: hidden;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -48,9 +91,9 @@ ul {
 
 /* Header */
 header {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background-color: var(--header-bg);
+    backdrop-filter: var(--header-blur);
+    -webkit-backdrop-filter: var(--header-blur);
     color: var(--primary-color);
     padding: 15px 0;
     position: sticky;
@@ -59,6 +102,7 @@ header {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
     letter-spacing: -0.02em;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -125,6 +169,17 @@ nav ul li a.active {
     transform: translateY(-2px);
 }
 
+[data-theme="dark"] nav ul li a {
+    color: #f5f5f7;
+}
+
+[data-theme="dark"] nav ul li a:hover, 
+[data-theme="dark"] nav ul li a.active {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 113, 227, 0.3);
+}
+
 /* Removed underline indicator for active nav items */
 
 /* Sections */
@@ -136,7 +191,7 @@ nav ul li a.active {
 }
 
 .section:nth-child(even) {
-    background-color: white;
+    background-color: var(--card-bg);
 }
 
 .section h2 {
@@ -147,6 +202,10 @@ nav ul li a.active {
     font-weight: 600;
     letter-spacing: -0.5px;
     line-height: 1.1;
+}
+
+[data-theme="dark"] .section h2 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* About Section */
@@ -198,7 +257,7 @@ nav ul li a.active {
 }
 
 .about-values {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 40px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
@@ -225,7 +284,7 @@ nav ul li a.active {
 .about-values li {
     display: flex;
     align-items: flex-start;
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     padding: 25px;
     border-radius: 10px;
     transition: var(--transition);
@@ -241,7 +300,7 @@ nav ul li a.active {
 .value-icon {
     width: 50px;
     height: 50px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -294,6 +353,7 @@ nav ul li a.active {
     transition: var(--transition);
     height: 250px;
     width: 100%;
+    background-color: var(--card-bg);
 }
 
 .gallery-item:hover {
@@ -341,11 +401,16 @@ nav ul li a.active {
 
 /* Page Banner */
 .page-banner {
-    background: var(--primary-color);
+    background: var(--dark-color);
     color: white;
     padding: 120px 0 60px 0;
     text-align: center;
     width: 100%;
+}
+
+[data-theme="dark"] .page-banner {
+    background: #000;
+    box-shadow: inset 0 -10px 30px -10px rgba(0, 0, 0, 0.8);
 }
 
 .page-banner h2 {
@@ -396,7 +461,7 @@ nav ul li a.active {
 }
 
 .education-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
@@ -404,6 +469,11 @@ nav ul li a.active {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+[data-theme="dark"] .education-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .education-card:hover {
@@ -899,12 +969,17 @@ nav ul li a.active {
 }
 
 .interest-highlights span {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-color);
+}
+
+[data-theme="dark"] .interest-highlights span {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .interests-footer {
@@ -984,7 +1059,7 @@ nav ul li a.active {
 .experience-item {
     margin-bottom: 40px;
     padding: 35px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     box-shadow: var(--box-shadow);
     display: flex;
@@ -992,6 +1067,11 @@ nav ul li a.active {
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.06);
     width: 100%;
+}
+
+[data-theme="dark"] .experience-item {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .experience-item:hover {
@@ -1324,13 +1404,18 @@ nav ul li a.active {
 }
 
 .skill-card {
-    background-color: white;
+    background-color: var(--card-bg);
     padding: 25px 20px;
     border-radius: 16px;
     text-align: center;
     transition: var(--transition);
     box-shadow: var(--box-shadow);
     border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .skill-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .skill-card:hover {
@@ -1538,7 +1623,7 @@ nav ul li a.active {
 }
 
 .filter-btn {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     border: none;
     padding: 10px 20px;
     border-radius: 30px;
@@ -1548,6 +1633,11 @@ nav ul li a.active {
     color: var(--text-color);
     cursor: pointer;
     transition: var(--transition);
+}
+
+[data-theme="dark"] .filter-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .filter-btn:hover {
@@ -1570,13 +1660,18 @@ nav ul li a.active {
 }
 
 .project-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.06);
     height: 100%;
+}
+
+[data-theme="dark"] .project-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .project-card:hover {
@@ -1657,12 +1752,17 @@ nav ul li a.active {
 }
 
 .tag {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--secondary-color);
+}
+
+[data-theme="dark"] .tag {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .project-description {
@@ -1800,7 +1900,7 @@ nav ul li a.active {
 }
 
 .contact-info-container {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 30px;
     box-shadow: var(--box-shadow);
@@ -1819,7 +1919,7 @@ nav ul li a.active {
 .contact-icon {
     width: 50px;
     height: 50px;
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1878,7 +1978,7 @@ nav ul li a.active {
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     border-radius: 5px;
 }
 
@@ -1893,7 +1993,7 @@ nav ul li a.active {
 
 /* Contact Form */
 .contact-form-container {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 30px;
     box-shadow: var(--box-shadow);
@@ -1931,6 +2031,15 @@ nav ul li a.active {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     transition: var(--transition);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .form-group input:focus,
@@ -1988,7 +2097,7 @@ nav ul li a.active {
 .social-icon {
     width: 60px;
     height: 60px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2026,7 +2135,7 @@ nav ul li a.active {
 
 /* Footer */
 footer {
-    background-color: var(--light-color);
+    background-color: var(--bg-color);
     color: var(--text-light);
     text-align: center;
     padding: 30px 0;
@@ -2042,7 +2151,7 @@ footer .container {
 
 /* Hero Section */
 .hero-section {
-    background: var(--light-color);
+    background: var(--bg-color);
     color: var(--primary-color);
     padding: 120px 0 80px 0;
     overflow: hidden;
@@ -2160,7 +2269,7 @@ footer .container {
 }
 
 .highlight-item {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     padding: 35px 30px;
     box-shadow: var(--box-shadow);
@@ -2172,6 +2281,11 @@ footer .container {
 .highlight-item:hover {
     transform: translateY(-10px);
     box-shadow: var(--card-hover);
+}
+
+[data-theme="dark"] .highlight-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .highlight-icon {
@@ -2187,6 +2301,11 @@ footer .container {
     margin-right: auto;
     border-radius: 50%;
     background-color: rgba(0, 113, 227, 0.1);
+}
+
+[data-theme="dark"] .highlight-icon {
+    background-color: rgba(0, 113, 227, 0.3);
+    box-shadow: 0 0 15px rgba(0, 113, 227, 0.2);
 }
 
 .highlight-item:nth-child(2) .highlight-icon {
@@ -2252,7 +2371,7 @@ footer .container {
     display: flex;
     align-items: center;
     gap: 30px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: var(--box-shadow);
@@ -2264,6 +2383,11 @@ footer .container {
 .featured-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--card-hover);
+}
+
+[data-theme="dark"] .featured-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .featured-item img {
@@ -2293,6 +2417,87 @@ footer .container {
     color: var(--text-light);
     line-height: 1.5;
     font-size: 1.05rem;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .theme-toggle {
+    background-color: #ffc107;
+    color: #121212;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+    transform: rotate(180deg);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+}
+
+/* Resume Download Button */
+.resume-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.resume-download:hover {
+    background-color: #005bbf;
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+}
+
+.resume-download i {
+    font-size: 1.2rem;
+}
+
+/* Form Feedback Animation */
+@keyframes successMessage {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.message-success {
+    display: none;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    animation: successMessage 0.5s ease;
+}
+
+.message-success.show {
+    display: block;
 }
 
 /* Responsive Design */

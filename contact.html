@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Apply theme early to prevent flash -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
     <title>Contact - Owen Wright</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -139,6 +148,9 @@
                         </div>
                         
                         <button type="submit" class="submit-btn">Send Message</button>
+                        <div id="message-success" class="message-success">
+                            <i class="fas fa-check-circle"></i> Your message has been sent successfully! I'll get back to you soon.
+                        </div>
                     </form>
                 </div>
             </div>
@@ -168,11 +180,17 @@
             <p>&copy; 2025 Owen Wright. All rights reserved.</p>
         </div>
     </footer>
+    
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" title="Toggle Light/Dark Mode">
+        <i class="fas fa-moon"></i>
+    </div>
 
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('message-success');
             
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -194,15 +212,27 @@
                 const submitBtn = contactForm.querySelector('.submit-btn');
                 const originalText = submitBtn.textContent;
                 
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.backgroundColor = 'var(--accent-color)';
+                // First, show the button animation
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
                 
-                // Reset form and button after 3 seconds
+                // Simulate server response delay (1.5 seconds)
                 setTimeout(() => {
-                    contactForm.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.backgroundColor = '';
-                }, 3000);
+                    // Hide the button animation
+                    submitBtn.style.display = 'none';
+                    
+                    // Show the success message with animation
+                    successMessage.classList.add('show');
+                    
+                    // Reset form and restore button after 3 seconds
+                    setTimeout(() => {
+                        contactForm.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.display = '';
+                        submitBtn.disabled = false;
+                        successMessage.classList.remove('show');
+                    }, 3000);
+                }, 1500);
             });
         });
     </script>

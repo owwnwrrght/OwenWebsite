@@ -52,4 +52,66 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.boxShadow = '';
         });
     });
+    
+    // Dark mode toggle functionality - Apply this as early as possible to avoid flash of incorrect theme
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Set the initial theme immediately
+    if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+    
+    // Then update the button once DOM is loaded
+    const themeToggle = document.querySelector('.theme-toggle');
+    
+    // Update the toggle icon
+    if (themeToggle) {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        themeToggle.innerHTML = currentTheme === 'dark' 
+            ? '<i class="fas fa-sun"></i>'
+            : '<i class="fas fa-moon"></i>';
+    }
+    
+    // Toggle theme when button is clicked
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            themeToggle.innerHTML = newTheme === 'dark' 
+                ? '<i class="fas fa-sun"></i>' 
+                : '<i class="fas fa-moon"></i>';
+        });
+    }
+    
+    // Resume download functionality
+    const resumeBtn = document.querySelector('.resume-download');
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', function() {
+            // Create download animation
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading...';
+            
+            // Simulate download delay
+            setTimeout(() => {
+                // In a real scenario, you would have an actual file to download
+                // For now, we'll just update the button text as if it succeeded
+                this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-download"></i> Download Resume';
+                }, 2000);
+                
+                // For demonstration - in a real scenario you would trigger a download
+                // window.location.href = 'path/to/Owen_Wright_Resume.pdf';
+            }, 1500);
+        });
+    }
 });
