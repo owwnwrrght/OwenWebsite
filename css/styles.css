@@ -46,12 +46,13 @@
 
 /* Improve contrast for dark mode buttons */
 [data-theme="dark"] .btn-primary {
-    background-color: #0095ff;
-    box-shadow: 0 0 15px rgba(0, 149, 255, 0.3);
+    background-color: #0071e3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+    border-color: #0095ff;
     color: #ffffff;
 }
 
@@ -2277,47 +2278,51 @@ footer .container {
 .hero-buttons {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .btn {
     display: inline-block;
     padding: 12px 24px;
-    border-radius: 18px;
+    border-radius: 6px;
     font-weight: 500;
     text-decoration: none;
     transition: var(--transition);
     text-align: center;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-transform: uppercase;
 }
 
 .btn-primary {
-    background-color: var(--secondary-color);
+    background-color: var(--dark-color);
     color: white;
-    font-weight: 500;
-    border-radius: 18px;
-    padding: 10px 22px;
-}
-
-.btn-primary:hover {
-    background-color: #2386ec;
-    transform: translateY(-3px);
-    color: white;
-    box-shadow: 0 2px 6px rgba(0, 113, 227, 0.4);
-}
-
-.btn-secondary {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: var(--primary-color);
     border: none;
 }
 
-.btn-secondary:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+.btn-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background-color: transparent;
     color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--secondary-color);
+    position: relative;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 113, 227, 0.4);
 }
 
 /* Highlights Section */
@@ -2370,7 +2375,7 @@ footer .container {
 }
 
 .highlight-item:nth-child(2) .highlight-icon {
-    color: var(--tertiary-color);
+    color: var(--secondary-color);
 }
 
 .highlight-item:nth-child(3) .highlight-icon {
@@ -2378,7 +2383,7 @@ footer .container {
 }
 
 .highlight-item:nth-child(4) .highlight-icon {
-    color: #9b59b6;
+    color: var(--secondary-color);
 }
 
 .highlight-item h3 {
