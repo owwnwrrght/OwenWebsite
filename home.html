@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owen Wright - Portfolio</title>
+    <!-- Apply theme early to prevent flash -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Owen Wright</h1>
+            <p class="subtitle">Computer Science & Business Student</p>
+            <nav>
+                <ul>
+                    <li><a href="home" class="active">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="education">Education</a></li>
+                    <li><a href="experience-leadership">Experience & Leadership</a></li>
+                    <li><a href="skills">Skills</a></li>
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="interests">Interests</a></li>
+                    <li><a href="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="section hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Welcome to my Portfolio</h2>
+                    <p>Computer Science & Business Student at the University of Colorado Boulder with a passion for technology, leadership, and entrepreneurship.</p>
+                    <div class="hero-buttons">
+                        <a href="about" class="btn btn-primary">Learn About Me</a>
+                        <a href="projects" class="btn btn-secondary">View My Projects</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/professional_headshot.jpg" alt="Owen Wright - Professional Headshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="highlights" class="section">
+        <div class="container">
+            <h2>Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Dual degree in Computer Science and Business Administration at the University of Colorado Boulder.</p>
+                    <a href="education" class="highlight-link">Learn More</a>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Experience</h3>
+                    <p>Experience in data analysis, education, and leadership roles with demonstrated impact.</p>
+                    <a href="experience-leadership" class="highlight-link">Learn More</a>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Skills</h3>
+                    <p>Proficient in Swift, Python, C++, HTML/CSS, and various technical platforms.</p>
+                    <a href="skills" class="highlight-link">Learn More</a>
+                </div>
+                
+                <div class="highlight-item">
+                    <div class="highlight-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Projects</h3>
+                    <p>Developed multiple projects showcasing technical skills and problem-solving abilities.</p>
+                    <a href="projects" class="highlight-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="section">
+        <div class="container">
+            <h2>Featured Achievements</h2>
+            <div class="featured-content">
+                <div class="featured-item">
+                    <img src="images/Emerging Leader of The Year.JPG" alt="Emerging Leader of The Year Award">
+                    <div class="featured-text">
+                        <h3>Emerging Leader of the Year</h3>
+                        <p>Recognized by the University of Colorado for exceptional leadership skills and community impact.</p>
+                    </div>
+                </div>
+                <div class="featured-item">
+                    <img src="images/IFC Executive Board.jpg" alt="IFC Executive Board">
+                    <div class="featured-text">
+                        <h3>IFC President</h3>
+                        <p>Leading and governing 12+ fraternity chapters at the University of Colorado Boulder.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Owen Wright. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle" title="Toggle Light/Dark Mode">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

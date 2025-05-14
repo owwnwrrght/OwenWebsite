@@ -24,7 +24,7 @@
             <p class="subtitle">Computer Science & Business Student</p>
             <nav>
                 <ul>
-                    <li><a href="index">Home</a></li>
+                    <li><a href="home">Home</a></li>
                     <li><a href="about">About</a></li>
                     <li><a href="education">Education</a></li>
                     <li><a href="experience-leadership">Experience & Leadership</a></li>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="contact-container">
-                <div class="contact-info-container fade-in">
+                <div class="contact-info-container fade-in" style="width: 100%;">
                     <div class="contact-methods">
                         <div class="contact-method">
                             <div class="contact-icon">
@@ -61,17 +61,6 @@
                                 <h4>Email</h4>
                                 <p><a href="mailto:owwnwrrght@gmail.com">owwnwrrght@gmail.com</a></p>
                                 <p class="contact-note">For project inquiries and general questions</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fas fa-message"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Contact Form</h4>
-                                <p>Please use the form on this page</p>
-                                <p class="contact-note">I'll respond to your message promptly</p>
                             </div>
                         </div>
                         
@@ -98,73 +87,16 @@
                         </div>
                     </div>
 
-                    <div class="availability-schedule">
-                        <h4>Availability</h4>
-                        <p>Currently accepting internship offers and project collaborations for Summer 2025</p>
-                        <div class="schedule-grid">
-                            <div class="schedule-day">
-                                <span class="day">Monday - Friday</span>
-                                <span class="hours">9:00 AM - 5:00 PM MST</span>
-                            </div>
-                            <div class="schedule-day">
-                                <span class="day">Saturday</span>
-                                <span class="hours">11:00 AM - 3:00 PM MST</span>
-                            </div>
-                            <div class="schedule-day">
-                                <span class="day">Sunday</span>
-                                <span class="hours">Closed</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container fade-in">
-                    <h3>Send Me a Message</h3>
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your email address" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="" disabled selected>Select a subject</option>
-                                <option value="job-opportunity">Job Opportunity</option>
-                                <option value="project-collaboration">Project Collaboration</option>
-                                <option value="speaking-engagement">Speaking Engagement</option>
-                                <option value="general-inquiry">General Inquiry</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Your message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                        <div id="message-success" class="message-success">
-                            <i class="fas fa-check-circle"></i> Your message has been sent successfully! I'll get back to you soon.
-                        </div>
-                    </form>
                 </div>
             </div>
 
             <div class="social-links fade-in">
                 <h3>Connect on Social Media</h3>
                 <div class="social-icons">
-                    <a href="https://github.com/" target="_blank" class="social-icon">
+                    <a href="https://github.com/owwnwrrght" target="_blank" class="social-icon">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://twitter.com/" target="_blank" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <a href="https://www.instagram.com/owenwrrght/" target="_blank" class="social-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/owenwright-/" target="_blank" class="social-icon">
@@ -188,53 +120,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contact-form');
-            const successMessage = document.getElementById('message-success');
-            
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // In a real application, you would send the form data to a server here
-                // For now, we'll just show a success message
-                
-                const formData = new FormData(contactForm);
-                let formValues = {};
-                
-                formData.forEach((value, key) => {
-                    formValues[key] = value;
-                });
-                
-                // Log the form values (for demonstration)
-                console.log('Form submission:', formValues);
-                
-                // Show success message
-                const submitBtn = contactForm.querySelector('.submit-btn');
-                const originalText = submitBtn.textContent;
-                
-                // First, show the button animation
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                // Simulate server response delay (1.5 seconds)
-                setTimeout(() => {
-                    // Hide the button animation
-                    submitBtn.style.display = 'none';
-                    
-                    // Show the success message with animation
-                    successMessage.classList.add('show');
-                    
-                    // Reset form and restore button after 3 seconds
-                    setTimeout(() => {
-                        contactForm.reset();
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.style.display = '';
-                        submitBtn.disabled = false;
-                        successMessage.classList.remove('show');
-                    }, 3000);
-                }, 1500);
-            });
-        });
+        // No contact form script needed anymore
     </script>
 </body>
 </html>
