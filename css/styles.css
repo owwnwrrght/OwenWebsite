@@ -903,7 +903,7 @@ nav ul li a.active {
 }
 
 .interest-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 15px;
     padding: 30px;
     box-shadow: var(--box-shadow);
@@ -914,6 +914,12 @@ nav ul li a.active {
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .interest-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .interest-card:hover {
@@ -998,12 +1004,18 @@ nav ul li a.active {
     max-width: 800px;
     margin: 40px auto;
     padding: 30px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-light);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .interests-footer {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Experience & Leadership Section */
@@ -1144,7 +1156,7 @@ nav ul li a.active {
 .leadership-item {
     margin-bottom: 40px;
     padding: 35px;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     box-shadow: var(--box-shadow);
     display: flex;
@@ -1153,6 +1165,11 @@ nav ul li a.active {
     border: 1px solid rgba(0, 0, 0, 0.06);
     width: 100%;
     flex-wrap: wrap;
+}
+
+[data-theme="dark"] .leadership-item {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -1533,7 +1550,7 @@ nav ul li a.active {
 }
 
 .certification-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 18px;
     box-shadow: var(--box-shadow);
     padding: 35px;
@@ -1542,6 +1559,11 @@ nav ul li a.active {
     gap: 20px;
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .certification-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .certification-card:hover {
